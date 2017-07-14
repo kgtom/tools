@@ -1,0 +1,44 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;" />
+    <meta http-equiv="refresh" content="5">
+    <script src="jquery-2.1.4.min.js"></script>
+</head>
+<body>
+  
+    <iframe  style="display:none" id="tmcTest" src="#"></iframe>
+    <button type="button" id="vote" onclick="testNet()">测试网络连接2222</button>
+    <button type="button" onclick="queryResult()">查看投票结果2222</button>
+</body>
+</html>
+<script>
+    var code = "v5v5";
+    //页面加载
+    $(document).ready(function () {
+
+        generateCode()
+        var url = "http://www.ctcnn.com/jinlvAward2016/vote.jsp?id=56&act=yzmCode&awardIterm_id=10&code=" + code;
+        document.getElementById('tmcTest').src = url;      
+
+    });
+
+    //随机码
+    function generateCode() {
+        code = ("0000" + (Math.random() * Math.pow(36, 4) << 0).toString(36)).slice(-4);
+    }  
+
+    //判断当前网络连接
+    function testNet()
+    {        
+        if (window.navigator.onLine == true) {
+            alert("网络很棒，开着此页面小bee正在为您努力工作...");
+        } else {
+            alert("网络有点问题，小bee暂时不能为您工作....");
+        }
+    }
+    function queryResult()
+    {
+        document.getElementById('tmcTest').style.display = "block";
+    }
+
+</script>  
