@@ -1,9 +1,10 @@
 
-使用git 
+使用git 代理
 $ git config --global http.proxy http://127.0.0.1:1080
 
 git config --global https.proxy http://127.0.0.1:1080
 
+执行下面命令：
 
 
 http_proxy=127.0.0.1:1080 go get  -u -v github.com/newhook/go-symbols
