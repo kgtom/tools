@@ -1,0 +1,18 @@
+
+使用git 
+$ git config --global http.proxy http://127.0.0.1:1080
+
+git config --global https.proxy http://127.0.0.1:1080
+
+
+
+http_proxy=127.0.0.1:1080 go get  -u -v github.com/newhook/go-symbols
+http_proxy=127.0.0.1:1080 go get  -u -v golang.org/x/tools/cmd/guru
+http_proxy=127.0.0.1:1080 go get  -u -v golang.org/x/tools/cmd/gorename
+http_proxy=127.0.0.1:1080 go get  -u -v github.com/fatih/gomodifytags  
+http_proxy=127.0.0.1:1080 go get  -u -v sourcegraph.com/sqs/goreturns
+http_proxy=127.0.0.1:1080 go get  -u -v github.com/golang/lint/golint  
+http_proxy=127.0.0.1:1080 go get  -u -v github.com/cweill/gotests/... 
+http_proxy=127.0.0.1:1080 go get  -v -u github.com/peterh/liner github.com/derekparker/delve/cmd/dlv
+http_proxy=127.0.0.1:1080 go get -u github.com/josharian/impl
+
