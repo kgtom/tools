@@ -1,0 +1,47 @@
+1.go tool pprof:
+  如果您想跟踪运行缓慢的函数，或者找到大部分CPU时间花费在哪里，这个工具就是不合适的。
+  您应该使用，它可以显示在每个函数中花费的CPU时间的百分比。
+  
+2.go tool trace:更适合于找出程序在一段时间内正在做什么，而不是总体上的开销.
+  当完成关键任务的goroutine被阻止运行时，可能会引起延迟问题。 可能的原因有很多：做系统调用时被阻塞; 被共享内存阻塞（通道/互斥等）;
+  被runtime系统（例如GC）阻塞，甚至可能调度程序不像您想要的那样频繁地运行关键goroutine。
+  
+  package main
+import (	
+    "os"
+    "runtime/trace"
+)
+
+func main() {
+    f, err := os.Create("trace.out")	
+    if err != nil {		
+       panic(err)
+    }	
+    defer f.Close()
+
+    err = trace.Start(f)
+     if err != nil {
+ 	panic(err)
+    }	
+    defer trace.Stop()  
+    // Your program here
+}
+
+reference:https://studygolang.com/articles/9693
+
+
+3. FlameGraph
+uber开源了一个工具，可以十分方便地查询profiler数据生成火焰图，如此优化性能更为直观。
+首先需要安装工具：
+go get github.com/uber/go-torch
+go get github.com/tools/godep
+godep restore
+git clone https://github.com/brendangregg/FlameGraph.git
+#上述操作需要设置正确的PATH来执行godep,go-torch,flamegraph.pl
+执行：
+go-torch --time=15 --file "torch.svg" --url http://127.0.0.1:5567
+上述命令会收集
+http://127.0.0.1:5567/debug/pprof/profile 的数据，并调用flamegraph绘制torch.svg火焰图。
+
+
+http://www.010lm.com/redian/2016/0319/1284264.html
