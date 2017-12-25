@@ -1,0 +1,7 @@
+git clone https://github.com/weinand/vscode-processes
+  cd vscode-processes
+  npm install
+  npm run package
+Once the extension VSIX is created, use VS Code's Install from VSIX... command to install the extension.
+
+reference:https://code.visualstudio.com/updates/v1_19
