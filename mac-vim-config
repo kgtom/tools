@@ -1,0 +1,99 @@
+1.根目录下创建
+mkdir ~/.vim
+touch ~/.vimrc
+2. .vimrc 内容如下：
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+syntax on
+set number
+set ts=4
+set noexpandtab
+%retab!
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'ctrlp.vim'
+Plugin 'taglist.vim'
+Plugin 'The-NERD-Commenter'
+Plugin 'The-NERD-tree'
+Plugin 'winmanager'
+Plugin 'molokai'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-sync'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+" Plugin 'L9'
+" Git plugin not hosted on GitHub
+" Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+" Plugin 'ascenator/L9', {'name': 'newL9'}
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+" 设置主题配色
+let g:molokai_original = 1
+let g:rehash256 = 1
+colorscheme molokai
+
+" NERDTree Settings{
+let NERDTreeShowBookmarks=1 "当打开NERDTree窗口时，自动显示Bookmarks
+map <F2> :silent! NERDTreeToggle<CR> "设置F2快捷键
+" }
+
+" YouCompleteMe{
+let mapleader = ','
+let g:ycm_error_symbol = 'e>'
+let g:ycm_warning_symbol = 'w>'
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR> "跳转到申明
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR> "跳转到定义
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR> "跳转到定义或申明
+nnoremap <leader>gi :YcmCompleter GoToInclude<CR> "跳转到头文件
+
+nnoremap <leader>gt :YcmCompleter GetType<CR> "获取类型
+let g:ycm_confirm_extra_conf=0 "启动是默认加载.ycm_extra_conf.py文件
+" }
+
+" 打开tabline功能,方便查看Buffer和切换,省去了minibufexpl插件
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+" 设置切换Buffer快捷键
+nnoremap <C-t> :bn<CR>
+nnoremap <C-s-t> :bp<CR>
+
+3: 在根目录下执行下面命令，逐个安装插件：
+vim +PluginInstall +qall 
+
+4.若需要支持C系语言，需要使用clang，因此需要手动编译:
+  ~/.vim/bundle/Youcompleteme/install.py --clang-completer
