@@ -1,0 +1,5 @@
+例如：
+git clone https://github.com/avelino/awesome-go.git
+执行命令时，尾部自动追加\,结果不能clone.
+
+解决方案：升级git
