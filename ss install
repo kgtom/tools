@@ -1,0 +1,56 @@
+下述操作在2018.03.22 亲测有效
+
+操作环境：CentOS 6.2 
+
+服务器地址：美国 芝加哥
+
+ 
+
+1.准备VPS
+
+2.安装sshd，设置sshd开机启动，允许root远程登录（可忽略，一般服务商会帮你预配置好）
+
+3.使用root用户远程登录主机，推荐使用Bitvise SSH Client  下载地址(点我)，也可以进官网下载（已被封，可用百度或Bing缓存页查看到下载地址）
+
+4.进行系统更新
+
+yum -y update
+5.安装wget下载器
+
+yum -y install wget
+6.下载ss安装脚本
+
+wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh
+7.使上述脚本属性可执行
+
+chmod +x shadowsocks.sh
+8.执行脚本
+
+./shadowsocks.sh 2>&1 | tee shadowsocks.log
+9.控制台会依次询问ss访问密码，访问端口，加密方式（选择端口后不需要你另外开放防火墙规则）
+
+10.请尽情使用吧！
+
+ 
+
+ 
+
+注:
+
+服务启停命令：
+
+启动
+
+/etc/init.d/shadowsocks start
+停止
+
+/etc/init.d/shadowsocks stop
+重启
+
+/etc/init.d/shadowsocks restart
+状态查询
+
+/etc/init.d/shadowsocks status
+
+reference:
+https://www.cnblogs.com/letsopen/p/7710939.html
