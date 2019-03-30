@@ -3,7 +3,7 @@
 ### 一、项目代码在gopath/src下面
 
 #### 1. setting.json设置
-~~~~
+~~~
 {
     "go.gopath": "/Users/tom/g",
     "go.goroot": "/usr/local/go"
@@ -12,6 +12,7 @@
 ~~~
 
 #### 2.launch.json 设置
+
 ~~~
 {
     // Use IntelliSense to learn about possible attributes.
@@ -39,6 +40,7 @@
         }
     ]
 }
+
 ~~~
 
 ### 二、项目代码b不在gopath/src目录下
