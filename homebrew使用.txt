@@ -1,0 +1,60 @@
+homebrew
+安装homebrew：
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+homebrew类似于redhat系列Linux系统里面的yum命令和Ubuntu系列的apt命令。
+
+homebrew源
+homebrew有三个源：
+
+homebrew源：本身自带的一些软件源
+formula源：额外的一些软件的软件名源
+bottles源：额外的一些软件的二进制源
+homebrew安装及配置
+homebrew本身源配置
+设置homebrew本身源：
+
+cd "$(brew --repo)" && git remote set-url origin git://mirrors.ustc.edu.cn/brew.git
+查看homebrew本身的源设置：
+
+git remote get-url origin
+homebrew formula源配置
+formula源是用来存放软件名称和二进制文件或者软件源码实际存放url的仓库。
+
+如果找不见某个软件了，那需要引入对应的软件的tap或者更新formula源。
+
+查看当前tap源：
+
+brew tap
+新增tap/删除tap
+
+brew tap ***
+brew untap ***
+设置并更新formula源：
+
+cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core" && git remote set-url origin git://mirrors.ustc.edu.cn/homebrew-core.git
+切换回默认的formula源：
+
+cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core" && git remote set-url origin https://github.com/Homebrew/homebrew-core.git
+bottles源
+homebrew安装的软件都在/usr/local/Cellar/目录中。
+
+bottles是用来存放源码的，而formula是存放软件名字的。
+
+使用中科大的bottles源：
+
+echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles' >> ~/.bash_profile
+brew的基本使用
+查询软件
+brew search 软件名
+安装软件
+brew install 软件名
+后台运行的软件（重启之后可以自动启动）
+brew services start|stop|restart 软件名
+卸载软件
+brew uninstall 软件名
+查看软件的信息
+brew info 软件名
+查看安装了哪些软件
+brew list 软件名
+查看帮助
+brew help
